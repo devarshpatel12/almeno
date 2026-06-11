@@ -1,4 +1,4 @@
-from app.services.csv_processor import clean_row, parse_date, clean_csv_rows, detect_anomalies
+from ..services.csv_processor import clean_row, parse_date, clean_csv_rows, detect_anomalies
 
 
 def test_parse_date():
