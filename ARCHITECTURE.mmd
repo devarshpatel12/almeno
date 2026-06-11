@@ -1,0 +1,9 @@
+flowchart LR
+  User[User] -->|Upload CSV| API[FastAPI API]
+  API -->|Enqueue job| Redis[Redis broker]
+  API -->|Read/write| Postgres[PostgreSQL]
+  Worker[Celery worker] -->|Consume job| Redis
+  Worker -->|Persist results| Postgres
+  Worker -->|Generate reports| Uploads[uploads/ directory]
+  Worker -->|Classify transactions| Gemini[LLM / Gemini fallback]
+  API -->|Download report| User
